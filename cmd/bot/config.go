@@ -49,6 +49,7 @@ func checkConfig(cfg *config) bool {
 	return true &&
 		cfg.ListenPath != "" &&
 		cfg.BotToken != "" &&
+		cfg.ListenDomain != "" &&
 		cfg.PeriodSeconds != 0 &&
 		cfg.MaxModels != 0 &&
 		cfg.TimeoutSeconds != 0 &&
