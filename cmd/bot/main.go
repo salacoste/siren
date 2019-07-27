@@ -88,7 +88,7 @@ func newWorker() *worker {
 	}
 
 	if info.LastErrorDate != 0 {
-		panic(fmt.Sprintf("Telegram callback failed: %s", info.LastErrorMessage))
+		log.Printf("Telegram callback failed: %s", info.LastErrorMessage)
 	}
 
 	return w
