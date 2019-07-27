@@ -83,6 +83,10 @@ func newWorker() *worker {
 	info, err := bot.GetWebhookInfo()
 	checkErr(err)
 
+	if cfg.Debug {
+		log.Printf("%+v\n", info)
+	}
+
 	if info.LastErrorDate != 0 {
 		panic(fmt.Sprintf("Telegram callback failed: %s", info.LastErrorMessage))
 	}
