@@ -75,6 +75,17 @@ func newWorker() *worker {
 	default:
 		panic("wrong website")
 	}
+
+	_, err = bot.SetWebhook(tg.NewWebhookWithCert(cfg.ListenDomain+bot.Token, cfg.Certificate))
+	checkErr(err)
+
+	info, err := bot.GetWebhookInfo()
+	checkErr(err)
+
+	if info.LastErrorDate != 0 {
+		panic(fmt.Sprintf("Telegram callback failed: %s", info.LastErrorMessage))
+	}
+
 	return w
 }
 
