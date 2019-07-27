@@ -11,6 +11,7 @@ import (
 	"sync"
 	"syscall"
 	"time"
+	"log"
 
 	"github.com/bcmk/siren/lib"
 	tg "github.com/bcmk/telegram-bot-api"
@@ -75,6 +76,21 @@ func newWorker() *worker {
 	default:
 		panic("wrong website")
 	}
+
+	_, err = bot.SetWebhook(tg.NewWebhookWithCert(cfg.ListenDomain + cfg.ListenPath, cfg.Certificate))
+	checkErr(err)
+
+	info, err := bot.GetWebhookInfo()
+	checkErr(err)
+
+	if cfg.Debug {
+		log.Printf("%+v\n", info)
+	}
+
+	if info.LastErrorDate != 0 {
+		log.Printf("Telegram callback failed: %s", info.LastErrorMessage)
+	}
+
 	return w
 }
 
@@ -535,6 +551,9 @@ func main() {
 				}
 			}
 		case u := <-incoming:
+			if w.cfg.Debug {
+				log.Printf("%+v\n", u)
+			}
 			if u.Message != nil && u.Message.Chat != nil {
 				if u.Message.IsCommand() {
 					w.processIncomingMessage(u.Message.Chat.ID, u.Message.Command(), u.Message.CommandArguments())
