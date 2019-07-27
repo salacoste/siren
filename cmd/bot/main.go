@@ -77,7 +77,7 @@ func newWorker() *worker {
 		panic("wrong website")
 	}
 
-	_, err = bot.SetWebhook(tg.NewWebhookWithCert(cfg.ListenDomain+bot.Token, cfg.Certificate))
+	_, err = bot.SetWebhook(tg.NewWebhookWithCert(cfg.ListenDomain + cfg.ListenPath, cfg.Certificate))
 	checkErr(err)
 
 	info, err := bot.GetWebhookInfo()
