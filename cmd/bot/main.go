@@ -11,6 +11,7 @@ import (
 	"sync"
 	"syscall"
 	"time"
+	"log"
 
 	"github.com/bcmk/siren/lib"
 	tg "github.com/bcmk/telegram-bot-api"
@@ -546,6 +547,9 @@ func main() {
 				}
 			}
 		case u := <-incoming:
+			if w.cfg.Debug {
+				log.Printf("%+v\n", u)
+			}
 			if u.Message != nil && u.Message.Chat != nil {
 				if u.Message.IsCommand() {
 					w.processIncomingMessage(u.Message.Chat.ID, u.Message.Command(), u.Message.CommandArguments())
