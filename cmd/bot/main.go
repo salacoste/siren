@@ -481,16 +481,16 @@ func (w *worker) processIncomingMessage(chatID int64, command, arguments string)
 		w.listModels(chatID)
 	case "start", "help":
 		w.sendTr(chatID, false, w.tr.Help)
-	case "donate":
-		w.sendTr(chatID, false, w.tr.Donation)
-	case "feedback":
-		w.feedback(chatID, arguments)
-	case "source":
-		w.sendTr(chatID, false, w.tr.SourceCode)
-	case "language":
-		w.sendTr(chatID, false, w.tr.Languages)
-	case "version":
-		w.sendTr(chatID, false, w.tr.Version, version)
+	// case "donate":
+	// 	w.sendTr(chatID, false, w.tr.Donation)
+	// case "feedback":
+	// 	w.feedback(chatID, arguments)
+	// case "source":
+	// 	w.sendTr(chatID, false, w.tr.SourceCode)
+	// case "language":
+	// 	w.sendTr(chatID, false, w.tr.Languages)
+	// case "version":
+	// 	w.sendTr(chatID, false, w.tr.Version, version)
 	case "remove_all":
 		w.sendTr(chatID, false, w.tr.RemoveAll)
 	case "sure_remove_all":

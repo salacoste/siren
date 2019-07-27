@@ -64,7 +64,7 @@
         "parse": "raw"
     },
     "source_code": {
-        "str": "Source code: https://github.com/bcmk/siren",
+        "str": "Source code",
         "parse": "raw"
     },
     "unknown_command": {
@@ -76,11 +76,11 @@
         "parse": "html"
     },
     "languages": {
-        "str": "This bot in other languages\nРусский: t.me/BongacamsSirenBot",
+        "str": "This bot in other languages",
         "parse": "raw"
     },
     "version": {
-        "str": "Version: %s",
+        "str": "Version: 0.1 for MSK and SPB guys",
         "parse": "raw"
     },
     "profile_removed": {
