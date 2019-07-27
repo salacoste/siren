@@ -11,6 +11,6 @@
 *.key
 *.pem
 *.db
-*.json
+# *.json
 *.log
 .idea/
